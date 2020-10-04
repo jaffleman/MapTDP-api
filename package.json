@@ -24,6 +24,9 @@
     "body-parser": "^1.19.0",
     "check-node-version": "^4.0.3",
     "express": "^4.17.1",
+    "file": "^0.2.2",
+    "file-system": "^2.2.2",
+    "fs": "0.0.1-security",
     "jsonfile": "^6.0.1",
     "nodemon": "^2.0.3"
   },

@@ -82,11 +82,11 @@ module.exports = {
         //trie des tdp par rep puis par salle
         const newTab=[];
         for (let d = 0; d < tab3.length; d++) {
-            for (let f = 0; f < tab2[d].length; f++) { 
+            for (let f = 1; f < 4; f++) { 
                 for (let g = 1; g < 3; g++) {
                      for (let e = 0; e < tab.length; e++) {
                         if (tab[e].rep===tab3[d]){
-                            if (tab[e].salle===(f+1)) {
+                            if (tab[e].salle===(f)) {
                                 if (tab[e].rco===g) {
                                     newTab.push(tab[e]);
                                 }
@@ -147,26 +147,27 @@ module.exports = {
     },
     
     calcPositionReglette: (reglette,repName) => {
-        
+        if (repName==='rep??'){return null}
         const file = './founction_script/rep/'+repName+'.json'
         let repTab = []
         try {
             repTab = (jsonfile.readFileSync(file)).tab
         } catch (error) {
-            
+            throw error
         }
-
         for (let salle = 0; salle < (repTab.length); salle++) {
             for (let rco = 0; rco < (repTab[salle].length); rco++) {
                 for (let colone = 0; colone < (repTab[salle][rco].length); colone++) {
                     for (let position = 0; position < (repTab[salle][rco][colone].length); position++) {
                         if (repTab[salle][rco][colone][position].length>1) {
                             if (reglette == repTab[salle][rco][colone][position][0]) {
-                                return  [(salle+1),(rco+1),(colone+1),(position+1),(repTab[salle][rco][colone][position][1])];
+                             return([(salle+1),(rco+1),(colone+1),(position+1),(repTab[salle][rco][colone][position][1])]);
+                             
                             }
                         }else{
                             if (reglette == repTab[salle][rco][colone][position]) {
-                                return  [(salle+1),(rco+1),(colone+1),(position+1),null];                            
+                                return ([(salle+1),(rco+1),(colone+1),(position+1),null]);
+                                                          
                             }
                         }                                    
                     }
@@ -177,22 +178,22 @@ module.exports = {
     
     checheRepLa: (texla,MatchPositionTab,a) => {
         const baieLa =  parseInt(texla.substring((MatchPositionTab[a])-3,(MatchPositionTab[a])-1)); 
-        let r;
+        let rep;
         if (baieLa>0){
-            r =  texla.substring((MatchPositionTab[a])-9,(MatchPositionTab[a])-4);
+            rep =  texla.substring((MatchPositionTab[a])-9,(MatchPositionTab[a])-4);
         }else{
-            r =  texla.substring((MatchPositionTab[a])-8,(MatchPositionTab[a])-3);
+            rep =  texla.substring((MatchPositionTab[a])-8,(MatchPositionTab[a])-3);
         }
         
-        const reppath = './founction_script/rep/'+r+'.json'
+        const reppath = './founction_script/rep/'+rep+'.json'
         try {
             fs.statSync(reppath);
-            return r;
+            return ({rep, repHasfouded:true});
         }
         catch (err) {
-          if (err.code === 'ENOENT') {
-            return 'rep??';
-          }
+            if (err.code === 'ENOENT') {
+                return ({rep, repHasFouded:false});
+            }
         }
     }
 }
