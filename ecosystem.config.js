@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    script: 'index.js',
+    script: 'serveur.js',
     watch: '.'
   }, {
     script: './service-worker/',
