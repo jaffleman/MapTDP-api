@@ -1,0 +1,40 @@
+
+
+{
+    "tab" :
+    [ 
+        [
+            [ 
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]], 
+                [["L/INX02"],["L/INX03"],["L/INX04","TNI"],["L/INX05","TNI"],["L/INX06"],["L/INX14"],["L/INX15"],["L/INX16"],["x"]],
+                [["L/INX17"],["L/INX19"],["L/INX20"],["L/INX21"],["L/INX22"],["L/INX23"],["L/INX24"],["L/INX29"]], 
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]], 
+                [["L/INX30"],["L/INX31"],["L/INX37"],["L/INX38"],["L/INX39"],["L/INX50"],["L/INX51"],["L/INX52"]],
+                [["T/LIF40"],["T/LIF41"],["T/LIF42"],["T/LIF43"],["T/LIF44"],["T/LIF45"],["R/DEGG0"],["R/DEGG1"]], 
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],
+                [["L/INX55"],["L/INX56"],["L/INX57"],["L/INX84"],["L/INX85"],["L/INX86"],["L/INX98"],["L/INX99"]], 
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],
+                [["A/TEL68"],["A/TEL69"],["A/TEL70"],["A/TEL71"],["A/TEL72"],["A/TEL73"],["A/TEL74"],["A/TEL75"]], 
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]], 
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]], 
+                [["L/INXA0"],["L/INXA1"],["L/INXA2"],["L/INXA3"],["L/INXA4"],["L/INXA5"],["L/INXA6"],["L/INXA7"]],
+                [["L/INXA8"],["L/INXA9"],["L/INXB0"],["L/INXB1"],["L/INXB2"],["L/INXB3"],["L/INXB4"],["L/INXB5"]], 
+                [["L/INXB6"],["L/INXB7"],["L/INXB8"],["L/INXB0"],["L/INXC0"],["L/INXC1"],["L/INXC2"],["L/INXC3"]], 
+                [["R/DEGC4"],["R/DEGC5"],["R/DEGC7"],["R/DEGC8"],["R/DEGD5"],["R/DEGD6"],["R/DEGE9"],["R/DEGF0"]],
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],
+                [["x"],["R/DEGM6"],["R/DEGM7"],["R/DEGM8"],["R/DEGN9"],["R/DEGP0"],["R/DEGP1"],["R/DEGP2"]], 
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],
+                [["x"],["x"],["x"],["x"],["x"],["x"],["x"],["x"]],                
+                [["R/DEGE8"],["R/DEGG2"],["R/DEGG3"],["R/DEGG4"],["R/DEGG5"],["R/DEGK5"],["R/DEGL1"],["R/DEGL2"]],
+                [["R/DEGF1"],["R/DEGF2"],["R/DEGF3"],["R/DEGF4"],["R/DEGF5"],["R/DEGF6"],["R/DEGF7"],["R/DEGF8"]], 
+                [["R/DEGG6"],["R/DEGG8"],["R/DEGG9"],["R/DEGH0"],["R/DEGH1"],["R/DEGH2"],["R/DEGH3"],["R/DEGH4"]], 
+                [["R/DEGH5"],["R/DEGH6"],["R/DEGH7"],["R/DEGH9"],["R/DEGI0"],["R/DEGI2"],["R/DEGI3"],["R/DEGI4"]],
+                [["R/DEGI5"],["R/DEGI6"],["R/DEGI7"],["R/DEGI8"],["R/DEGJ0"],["R/DEGJ1"],["R/DEGJ2"],["R/DEGJ3"]],
+                [["R/DEGJ4"],["R/DEGJ5"],["R/DEGK6"],["R/DEGK7"],["R/DEGK8"],["R/DEGK9"],["R/DEGL0"],["x"]]
+            ]
+        ]
+    ]
+}

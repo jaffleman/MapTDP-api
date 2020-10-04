@@ -1,0 +1,31 @@
+{
+  "name": "maptdp",
+  "version": "1.0.0",
+  "description": "projet d'apprentissage",
+  "main": "serveur.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon serveur.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaffleman/Projet_MapTDP2.git"
+  },
+  "keywords": [
+    "tdp"
+  ],
+  "author": "Jaffleman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaffleman/Projet_MapTDP2/issues"
+  },
+  "homepage": "https://github.com/jaffleman/Projet_MapTDP2#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "check-node-version": "^4.0.3",
+    "express": "^4.17.1",
+    "jsonfile": "^6.0.1",
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {}
+}
