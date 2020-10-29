@@ -4,6 +4,10 @@ let texteFunction = require('./founction_script/gestionTexte')
 let myFileLog = require("./founction_script/writeLog.js") 
 const { json, urlencoded } = require('body-parser')
 const fs = require('fs');
+//const { request } = require('http')
+const jsonfile = require('jsonfile');
+//const creator = require('./founction_script/repCreator')
+
 
 
 
@@ -14,7 +18,7 @@ app.use(json())
 
 //Routes
 app.get('/getlog',(request, response)=>{
-    console.log('demande de lecture log');
+    console.log(myFileLog.time()+': demande de lecture log');
     if (request.query.arg === '*SuperJaffleman97160!*') {
         response.setHeader('Access-Control-Allow-Origin', '*')
         fs.readFile('./log.txt', (err, data) => {
@@ -31,7 +35,64 @@ app.get('/tdpCorrection',(request, response)=>{
     response.setHeader('Access-Control-Allow-Origin', '*')
     response.end(texteFunction.tdpCorrection(JSON.parse(request.query.arg)).toString());       
 })
+app.get('/CreatRep',(request,response)=>{
+    const h = myFileLog.time();
+    console.log(request.query.arg);
+    const {repName, structure} = JSON.parse(request.query.arg);
+    console.log(structure);
+    const folder = './founction_script/rep/'+repName.slice(-2);
+    const file = folder+'/'+repName+'.json';
+    console.log(h+': demande de création de répartiteur: '+repName);
+    fs.stat(folder, 
+    (err) => {
+            if (err) {
+                console.log(`Le répertoire: ${folder} n'existe pas.`);
+                fs.mkdir(folder,{recursive:false}, (err)=>{
+                    if (!err) {
+                        console.log(`Le répertoire: ${folder} a été créé.`);
+                        jsonfile.writeFile(file, structure,(err)=>{
+                            if(!err){
+                                console.log('Le fichier: '+repName+'.json a été créé.',"process terminé...");
+                        response.setHeader("Content-Type", "text/plain")
+                                
+                                response.setHeader('Access-Control-Allow-Origin', '*')
+                                response.end('Le Repartiteur: '+repName+' a été créé avec succes.');
+                                //
+                            }
+                        }) 
+                    }
+                })
+            }else{
+                console.log(`Le répertoir ${folder} existe déjà!`);
+                fs.stat(file,(err)=>{
+                    if (!err) {
+                        console.log('Le répartiteur '+repName+' existe déjà!',"process terminé...");
+                        response.setHeader("Content-Type", "text/plain")
+                        response.setHeader('Access-Control-Allow-Origin', '*')
+                        response.end('Creation du rep impossible: le rep existe déjà!');
+                        //
+                    }else{
+                        jsonfile.writeFile(file, structure, (err)=>{
+                            if(!err){
+                                console.log('Le fichier: '+repName+'.json a été créé.',"process terminé...");
+                        response.setHeader("Content-Type", "text/plain")
+                                
+                                response.setHeader('Access-Control-Allow-Origin', '*')
+                                response.end('Le Repartiteur: '+repName+' a été créé avec succes.');
+                                //
+                            }
+                        })   
+                    }
+                })
+            }
+        }
+    )
 
+
+/*
+    response.setHeader('Access-Control-Allow-Origin', '*')
+    response.end(creator.rep(JSON.parse(request.query.arg),h));    */
+})
 app.get('/datas', (request, response)=>{
     const h = myFileLog.time();    
     let responseObj = {
@@ -42,7 +103,7 @@ app.get('/datas', (request, response)=>{
         errorRep:{}
     }
     
-    console.log('server.js: reception des données')
+    console.log(h+': server.js: reception des données')
     if (request.query.arg === '') {
         responseObj.status = 100
         responseObj.msg = "NO DATA: Aucune donnée dans le presse-papier! Veuillez copier votre liste de TDP."
@@ -73,6 +134,7 @@ app.get('/datas', (request, response)=>{
 })
    
 app.listen(8081, () => {
-    console.log("Serveur demarrer et en ecoute sur le port 8081");
-    myFileLog.log(myFileLog.time()+'== DEMARRAGE DU SERVEUR =>>'); //Trace log du demarrage
+    const h = myFileLog.time();
+    console.log(h+"Serveur demarrer et en ecoute sur le port 8081");
+    myFileLog.log(h+'== DEMARRAGE DU SERVEUR =>>'); //Trace log du demarrage
 }) 
