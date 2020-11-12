@@ -148,7 +148,7 @@ module.exports = {
     
     calcPositionReglette: (reglette,repName) => {
         if (repName==='rep??'){return null}
-        const file = './founction_script/rep/'+repName+'.json'
+        const file =`./founction_script/rep/${repName.slice(-2)}/${repName}.json`
         let repTab = []
         try {
             repTab = (jsonfile.readFileSync(file)).tab
@@ -184,8 +184,9 @@ module.exports = {
         }else{
             rep =  texla.substring((MatchPositionTab[a])-8,(MatchPositionTab[a])-3);
         }
+        const folder = rep.slice(-2)
         
-        const reppath = './founction_script/rep/'+rep+'.json'
+        const reppath = `./founction_script/rep/${folder}/${rep}.json`
         try {
             fs.statSync(reppath);
             return ({rep, repHasfouded:true});

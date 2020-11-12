@@ -124,7 +124,7 @@ module.exports = {
         const jsonfile = require('jsonfile')
         const {newPosition,oldPosition} = data;
         const {rep, posissionReglette, salle, rco, colone, reglette} = newPosition;
-        const reppath = './founction_script/rep/'+rep+'.json'
+        const reppath = `./founction_script/rep/${rep.slice(-2)}/${rep}.json`
         const checkRep=()=>{
             try {
                 fs.statSync(reppath);
