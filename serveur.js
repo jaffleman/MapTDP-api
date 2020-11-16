@@ -73,6 +73,10 @@ app.get('/getrepstruct',(request,response)=>{
     )
 })
 app.get('/CreatRep',(request,response)=>{
+    let responseObj = {
+        status:0,
+        msg:'',
+    }
     const h = myFileLog.time();
     const {repName, structure, peupler} = JSON.parse(request.query.arg);
     const folder = './founction_script/rep/'+repName.slice(-2);
@@ -103,17 +107,23 @@ app.get('/CreatRep',(request,response)=>{
                 fs.stat(file,(err)=>{
                     if (!err) {
                         if (!peupler) {
+                            responseObj.status = false;
+                            responseObj.msg = 'Creation du rep impossible: le rep existe déjà!';
                             console.log('Le répartiteur '+repName+' existe déjà!',"process terminé...");
                             response.setHeader("Content-Type", "text/plain")
                             response.setHeader('Access-Control-Allow-Origin', '*')
-                            response.end('Creation du rep impossible: le rep existe déjà!');
+                            response.json(responseObj)
+                            response.end();
                         }else{
                             jsonfile.writeFile(file, structure, (err)=>{
                                 if(!err){
+                                    responseObj.status = true;
+                                    responseObj.msg = 'Le Repartiteur: '+repName+' a été peupler avec succes.';
                                     console.log('Le fichier: '+repName+'.json a été peupler avec sucess.',"process terminé...");
                                     response.setHeader("Content-Type", "text/plain")
                                     response.setHeader('Access-Control-Allow-Origin', '*')
-                                    response.end('Le Repartiteur: '+repName+' a été peupler avec succes.');
+                                    response.json(responseObj)
+                                    response.end();
                                     //
                                 }
                             }) 
@@ -123,10 +133,13 @@ app.get('/CreatRep',(request,response)=>{
                         if (!peupler) {
                             jsonfile.writeFile(file, structure, (err)=>{
                                 if(!err){
+                                    responseObj.status = true;
+                                    responseObj.msg = 'Le Repartiteur: '+repName+' a été créé avec succes.';
                                     console.log('Le fichier: '+repName+'.json a été créé.',"process terminé...");
                                     response.setHeader("Content-Type", "text/plain")
                                     response.setHeader('Access-Control-Allow-Origin', '*')
-                                    response.end('Le Repartiteur: '+repName+' a été créé avec succes.');
+                                    response.json(responseObj)
+                                    response.end();
                                     //
                                 }
                             }) 
